@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "Epilepsy Sans";
+  src: url("../EpilepsySans.ttf");
+  font-weight: normal;
+}
+
+*{
+  margin: 0 0;
+  padding: 0 0;
+  font-family: "Epilepsy Sans";
+  text-decoration: none;
+}
+
+header{
+  display: grid;
+  justify-content: center;
+  height: 100px;
+}
+
+.header{
+  background-color: #4B4B4B;
+  border: #98C15E 1px solid;
+  width: 1400px;
+  display: grid;
+  grid-template-columns: 350px 1050px;
+  align-items: center;
+  justify-items: center;
+}
+
+nav{
+  display: flex;
+  gap: 15px;
+  justify-content: right;
+  width: 100%;
+  align-items: center;
+  margin-right: 36px;
+}
+
+body{
+  background-color: #363636;
+}
+
+a{
+  -webkit-text-stroke: #CDE735 0.1px;
+  font-size: 48px; 
+  font-weight: bold; 
+  color: #363636; 
+}
+
+a:hover{
+  border-bottom: #CDE735 2px solid;
+}
+
+a:visited{
+  -webkit-text-stroke: #CDE735 1px;
+  color: #363636;
+}
+
+h1,h2,h3,h4,h5,h6{
+ font-weight: normal;
+ font-size: medium;   
+}
