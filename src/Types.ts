@@ -1,42 +1,43 @@
 export interface IFilms {
-	id: number
-	name: string
-	country: string
-	type: string
-	age: number
-	image: string
-	description: string
-	author: string
-	idState: number
+  id: number;
+  name: string;
+  country: string;
+  type: string;
+  age: number;
+  image: string;
+  description: string;
+  author: string;
+  idState: number;
 }
 
 export interface ISales {
-	id: number
-	name: string
-	age: string
-	sale: number
-	description: string
+  id: number;
+  name: string;
+  age: string;
+  sale: number;
+  description: string;
 }
 
 export interface IState {
-	id: number
-	text: string
+  id: number;
+  text: string;
 }
 
 export interface ISeances {
-	id: number
-	time: string
-	idHall: number
-	idFilm: number
+  id: number;
+  time: string;
+  idHall: number;
+  idFilm: number;
 }
 
 export interface IHalls {
-	id: number
-	seats: ISeats[][]
+  id: number;
+  adress: string;
+  seats: ISeats[][];
 }
 
 export interface ISeats {
-	id: number
-	price: number
-	isBook: boolean
+  id: number;
+  price: number;
+  isBook: boolean;
 }

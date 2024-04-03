@@ -1,10 +1,9 @@
 <script lang="ts">
 import Main from './components/Main.vue'
-import { IState, IFilms, ISeances } from './Types'
+import { IState, IFilms, ISeances, IHalls, ISeats } from './Types';
 
 export default {
 	components: {
-		Main,
 	},
 
 	created() {
@@ -97,16 +96,66 @@ export default {
 		]
 
 		let seances: ISeances[] = [
-			{ id: 1, time: '22:40', idHall: 1, idFilm: 1 },
-			{ id: 2, time: '22:45', idHall: 1, idFilm: 2 },
-			{ id: 2, time: '22:50', idHall: 1, idFilm: 3 },
+			{ id: 1, time: '20:00', idHall: 1, idFilm: 1 },
+			{ id: 2, time: '20:00', idHall: 1, idFilm: 2 },
+			{ id: 3, time: '20:00', idHall: 1, idFilm: 3 },
+
+			{ id: 4, time: '22:40', idHall: 1, idFilm: 1 },
+			{ id: 5, time: '22:45', idHall: 1, idFilm: 2 },
+			{ id: 6, time: '22:50', idHall: 1, idFilm: 3 },
+
+			{ id: 7, time: '01:20', idHall: 1, idFilm: 1 },
+			{ id: 8, time: '01:25', idHall: 1, idFilm: 2 },
+			{ id: 9, time: '01:30', idHall: 1, idFilm: 3 },
+			
 		]
+
+		let seats: ISeats[][]=[
+			[{
+			id:1,isBook:false,price:100
+		},
+		{
+			id:2,isBook:false,price:100
+		},
+		{
+			id:3,isBook:false,price:100
+		},
+		{
+			id:4,isBook:false,price:100
+		},
+		{
+			id:5,isBook:false,price:100
+		},{
+			id:6,isBook:false,price:100
+		}],[{
+			id:7,isBook:false,price:100
+		},
+		{
+			id:8,isBook:false,price:100
+		},
+		{
+			id:9,isBook:false,price:100
+		},
+		{
+			id:10,isBook:false,price:100
+		},
+		{
+			id:11,isBook:false,price:100
+		},{
+			id:12,isBook:false,price:100
+		}]]
+
+		let halls: IHalls[]=[{id:1, adress:'Adress 1', seats:seats}]
 
 		this.$cookies.set('states', states)
 
 		this.$cookies.set('films', films)
 
 		this.$cookies.set('seances', seances)
+
+		this.$cookies.set('halls', halls)
+
+		this.$cookies.set('seats', seats)
 	},
 }
 </script>

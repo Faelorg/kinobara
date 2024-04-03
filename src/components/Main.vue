@@ -1,20 +1,25 @@
 <script lang="ts">
-import { IFilms, IState } from '../Types'
+import { IFilms, IState, ISeances, IHalls } from '../Types';
 
 let films: IFilms[]
 let states: IState[]
-
+let seances: ISeances[]
+let halls: IHalls[]
 export default {
 	data() {
 		return {
 			films,
 			states,
+			seances,
+			halls,
 		}
 	},
 
 	created() {
 		this.films = this.$cookies.get('films')
 		this.states = this.$cookies.get('states')
+		this.seances = this.$cookies.get('seances')
+		this.halls = this.$cookies.get('halls')
 	},
 }
 </script>
@@ -25,6 +30,26 @@ export default {
 				<img :src="film.image" alt="film" />
 				<div class="film_text">
 					<h1>{{ film.name }}</h1>
+					<div class="tags">
+
+						<p>{{ film.country }}</p>
+						<p>{{ film.type }}</p>
+						<p>{{ film.age }}+</p>
+
+					</div>
+					
+					<div class="seances">
+							<p>{{ halls[0].adress }}</p>
+							<div class="time">
+								<template v-for="seance in seances">
+
+									<div class="t" v-if="seance.idFilm==film.id">
+										{{ seance.time }}
+									</div>
+									
+								</template>
+							</div>
+					</div>
 				</div>
 			</div>
 		</template>
@@ -41,6 +66,34 @@ export default {
 	padding: 40px 31px;
 }
 
+.seances{
+	display: flex;
+	justify-content: space-between;
+	font-size: 30px;
+	margin-top: 24px;
+	color: #cde735;
+	border: #cde735 1px solid;
+	border-radius: 10px;
+	background-color: #4b4b4b;
+	align-items: center;
+	padding: 15px 30px;
+	margin-right: 37px;
+}
+
+.t{
+	border:#cde735 1px solid;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #363636;
+}
+
+.time{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 12px;
+	
+}
+
 .film {
 	display: grid;
 	grid-template-columns: max-content 1fr;
@@ -53,6 +106,15 @@ export default {
 img {
 	border-radius: 15px;
 	border: #cde735 solid 1px;
+}
+
+.tags{
+	margin-top: 24px;
+	display: grid;
+	grid-template-columns: max-content max-content max-content;
+	gap: 40px;
+	font-size: 30px;
+	color: #cde735;
 }
 
 .film_text {
