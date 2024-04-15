@@ -168,14 +168,36 @@ export default {
 
 <template>
 	<header>
-		<div class="header">
+		<div class="header" v-if="$route.meta.header==1">
 			<div class="mainDiv">
-				<router-link to="/" class="main">КиноБара</router-link>
+				<div class="main" >КиноБара</div>
 			</div>
 			<nav>
 				<router-link to="#">Акции</router-link>
 				<router-link to="soon">Скоро выходит</router-link>
 				<router-link to="contacts">Контакты</router-link>
+			</nav>
+		</div>
+
+		<div class="header" v-if="$route.meta.header==2">
+			<div class="mainDiv">
+				<router-link to="/">КиноБара</router-link>
+			</div>
+			<nav>
+				<router-link to="#">Акции</router-link>
+				<div class="main">Скоро выходит</div>
+				<router-link to="contacts">Контакты</router-link>
+			</nav>
+		</div>
+
+		<div class="header" v-if="$route.meta.header==3">
+			<div class="mainDiv">
+				<router-link to="/">КиноБара</router-link>
+			</div>
+			<nav>
+				<router-link to="#">Акции</router-link>
+				<router-link to="soon">Скоро выходит</router-link>
+				<div class="main">Контакты</div>
 			</nav>
 		</div>
 
@@ -223,6 +245,8 @@ export default {
 }
 .main {
 	font-size: 56px;
+	color: #CDE735;
+	border-bottom: #CDE735 4px solid;
 }
 .seans{
 	background-color: #4b4b4b;

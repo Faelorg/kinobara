@@ -13,16 +13,25 @@ const router = createRouter({
       path: "/",
       name: "main",
       component: Main,
+      meta: {
+        header: 1
+      }
     },
     {
-      path:"/soon",
-      name:"soon",
-      component:Soon
+      path: "/soon",
+      name: "soon",
+      component: Soon,
+      meta: {
+        header: 2
+      }
     },
     {
-      path:"/contacts",
-      name:"contacts",
-      component: Contacts
+      path: "/contacts",
+      name: "contacts",
+      component: Contacts,
+      meta: {
+        header: 3
+      }
     }
   ],
   history: createWebHistory(),

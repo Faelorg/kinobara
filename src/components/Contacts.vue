@@ -18,6 +18,21 @@ html{
     height: 100vh;
 }
 
+h3{
+    font-size: 72px;
+    text-align: center;
+    margin: 0 auto;
+    height: max-content;
+}
+
+*{
+    color: #cde735;
+}
+
+p{
+    margin: 0 auto
+}
+
 .main{
     background-color: #4b4b4b;
     border-radius: 15px;
@@ -25,8 +40,10 @@ html{
     height: 450px;
     width: 1320px;
     display: grid;
-    padding: 10px
-
+    grid-template-rows: max-content 1fr;
+    gap: 45px;
+    padding: 10px;
+    justify-content: center;
 }
 
 </style>
