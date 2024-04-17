@@ -1,6 +1,6 @@
 <script lang="ts">
 import Main from './components/Main.vue'
-import { IState, IFilms, ISeances, IHalls, ISeats } from './Types';
+import { IState, IFilms, ISeances, IHalls, ISeats, ISales } from './Types'
 let states: IState[] = [
 	{ id: 1, text: 'В прокате' },
 	{ id: 2, text: 'Скоро в прокате' },
@@ -101,58 +101,98 @@ let seances: ISeances[] = [
 	{ id: 7, time: '01:20', idHall: 1, idFilm: 1 },
 	{ id: 8, time: '01:25', idHall: 1, idFilm: 2 },
 	{ id: 9, time: '01:30', idHall: 1, idFilm: 3 },
-	
 ]
 
-let seats: ISeats[][]=[
-	[{
-	id:1,isBook:false,price:100
-},
-{
-	id:2,isBook:false,price:100
-},
-{
-	id:3,isBook:false,price:100
-},
-{
-	id:4,isBook:false,price:100
-},
-{
-	id:5,isBook:false,price:100
-},{
-	id:6,isBook:false,price:100
-}],[{
-	id:7,isBook:false,price:100
-},
-{
-	id:8,isBook:false,price:100
-},
-{
-	id:9,isBook:false,price:100
-},
-{
-	id:10,isBook:false,price:100
-},
-{
-	id:11,isBook:false,price:100
-},{
-	id:12,isBook:false,price:100
-}]]
+let seats: ISeats[][] = [
+	[
+		{
+			id: 1,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 2,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 3,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 4,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 5,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 6,
+			isBook: false,
+			price: 100,
+		},
+	],
+	[
+		{
+			id: 7,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 8,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 9,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 10,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 11,
+			isBook: false,
+			price: 100,
+		},
+		{
+			id: 12,
+			isBook: false,
+			price: 100,
+		},
+	],
+]
 
-let halls: IHalls[]=[{id:1, adress:'Adress 1', seats:seats}]
+let halls: IHalls[] = [{ id: 1, adress: 'Adress 1', seats: seats }]
+
+let sales: ISales[] = [
+	{
+		id: 1,
+		condition: 'Возраст: 6-18 лет',
+		description:
+			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut delectus qui, fugit magni quos eum!',
+		name: 'Студентам и школьникам',
+		sale: 20,
+		image: 'src/img/sale1.png',
+	},
+]
 export default {
-	data(){	
-		return{
-			films:films,
+	data() {
+		return {
+			films: films,
 			halls: halls,
 		}
-	}
-	,
-	components: {
 	},
+	components: {},
 
 	created() {
-
 		this.$cookies.set('states', states)
 
 		this.$cookies.set('films', films)
@@ -162,61 +202,89 @@ export default {
 		this.$cookies.set('halls', halls)
 
 		this.$cookies.set('seats', seats)
+
+		this.$cookies.set('sales', sales)
 	},
 }
 </script>
 
 <template>
 	<header>
-		<div class="header" v-if="$route.meta.header==1">
-			<div class="mainDiv">
-				<div class="main" >КиноБара</div>
-			</div>
-			<nav>
-				<router-link to="#">Акции</router-link>
-				<router-link to="soon">Скоро выходит</router-link>
-				<router-link to="contacts">Контакты</router-link>
-			</nav>
-		</div>
-
-		<div class="header" v-if="$route.meta.header==2">
+		<div class="header" v-if="$route.meta.header == 0">
 			<div class="mainDiv">
 				<router-link to="/">КиноБара</router-link>
 			</div>
 			<nav>
-				<router-link to="#">Акции</router-link>
+				<router-link to="/sales">Акции</router-link>
+				<router-link to="/soon">Скоро выходит</router-link>
+				<router-link to="/contacts">Контакты</router-link>
+			</nav>
+		</div>
+		<div class="header" v-if="$route.meta.header == 1">
+			<div class="mainDiv">
+				<div class="main">КиноБара</div>
+			</div>
+			<nav>
+				<router-link to="/sales">Акции</router-link>
+				<router-link to="/soon">Скоро выходит</router-link>
+				<router-link to="/contacts">Контакты</router-link>
+			</nav>
+		</div>
+
+		<div class="header" v-if="$route.meta.header == 2">
+			<div class="mainDiv">
+				<router-link to="/">КиноБара</router-link>
+			</div>
+			<nav>
+				<router-link to="/sales">Акции</router-link>
 				<div class="main">Скоро выходит</div>
-				<router-link to="contacts">Контакты</router-link>
+				<router-link to="/contacts">Контакты</router-link>
 			</nav>
 		</div>
 
-		<div class="header" v-if="$route.meta.header==3">
+		<div class="header" v-if="$route.meta.header == 3">
 			<div class="mainDiv">
 				<router-link to="/">КиноБара</router-link>
 			</div>
 			<nav>
-				<router-link to="#">Акции</router-link>
-				<router-link to="soon">Скоро выходит</router-link>
+				<router-link to="/sales">Акции</router-link>
+				<router-link to="/soon">Скоро выходит</router-link>
 				<div class="main">Контакты</div>
+			</nav>
+		</div>
+
+		<div class="header" v-if="$route.meta.header == 4">
+			<div class="mainDiv">
+				<router-link to="/">КиноБара</router-link>
+			</div>
+			<nav>
+				<div class="main">Акции</div>
+				<router-link to="/soon">Скоро выходит</router-link>
+				<router-link to="/contacts">Контакты</router-link>
 			</nav>
 		</div>
 
 		<div class="seans">
 			<div class="img">
-				<img src="./assets/image 3capy.png" alt="">
+				<img src="./assets/image 3capy.png" alt="" />
 			</div>
 			<p class="soon">Ближайшие сеансы</p>
-			<template  v-for="i in 4 ">
+			<template v-for="i in 4">
 				<div class="film">
 					<h2>
-						{{ films[i-1].name }}
+						{{ films[i - 1].name }}
 					</h2>
 					<p>
-						через {{ 40+(5*(i-1)) }} мин на
-						<br>
+						через {{ 40 + 5 * (i - 1) }} мин на
+						<br />
 						{{ halls[0].adress }}
 					</p>
-					<router-link to="#">Купить билет</router-link>
+					<router-link
+						:to="{
+							path: '/redir/' + films[i - 1].id,
+						}"
+						>Купить билет</router-link
+					>
 				</div>
 			</template>
 		</div>
@@ -227,8 +295,8 @@ export default {
 </template>
 
 <style scoped>
-.header{
-	height: 140px
+.header {
+	height: 140px;
 }
 
 .mainDiv {
@@ -242,80 +310,80 @@ export default {
 .layout {
 	margin: 0 auto;
 	margin-bottom: 87px;
+	width: 65%;
 }
 .main {
 	font-size: 56px;
-	color: #CDE735;
-	border-bottom: #CDE735 4px solid;
+	color: #cde735;
+	border-bottom: #cde735 4px solid;
 }
-.seans{
+.seans {
 	background-color: #4b4b4b;
 	border: #98c15e 1px solid;
 	border-radius: 10px;
-	width: 1256px;
 	display: grid;
 	justify-self: center;
 	height: 180px;
 	grid-template-columns: repeat(6, max-content);
 	padding: 0 32px;
 }
-p{
+p {
 	margin: 0;
 	padding: 0;
 }
 
-.soon{
+.soon {
 	transform: rotateZ(-90deg);
 	width: 180px;
 	text-align: center;
 	display: grid;
 	align-self: center;
-	color: #CDE735;
+	color: #cde735;
 	overflow-wrap: break-word;
 	font-size: 30px;
-	border-top: #CDE735 1px solid;
-	border-bottom: #CDE735 1px solid;
+	border-top: #cde735 1px solid;
+	border-bottom: #cde735 1px solid;
 }
 
-.img{
+.img {
 	display: grid;
 	justify-content: center;
 }
 
-header{
+header {
 	margin-bottom: 40px;
 	height: max-content;
 	display: grid;
 	gap: 40px;
 }
 
-footer{
+footer {
 	display: grid;
 
 	height: 140px;
-	background-color:#4b4b4b;
+	background-color: #4b4b4b;
 	border-top: #98c15e 1px solid;
-	color: #CDE735;
+	color: #cde735;
 	font-size: 36px;
 	justify-content: center;
 	align-content: center;
 }
 
-.film{
+.film {
 	display: grid;
 	justify-content: center;
 	align-items: center;
 	width: 210px;
-	border-left: #CDE735 1px solid;
-	border-right: #CDE735 1px solid;
+	border-left: #cde735 1px solid;
+	border-right: #cde735 1px solid;
 	text-align: center;
 	font-size: 20px;
-	color: #CDE735;
+	color: #cde735;
 }
-.film h2{
+.film h2 {
 	font-size: 28px;
 }
-.film a{
+.film a {
 	font-size: 18px;
 	height: max-content;
 }

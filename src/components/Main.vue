@@ -1,5 +1,5 @@
 <script lang="ts">
-import { IFilms, IState, ISeances, IHalls } from '../Types';
+import { IFilms, IState, ISeances, IHalls } from '../Types'
 
 let films: IFilms[]
 let states: IState[]
@@ -29,26 +29,33 @@ export default {
 			<div v-if="film.idState == 1" class="film">
 				<img :src="film.image" alt="film" />
 				<div class="film_text">
-					<h1>{{ film.name }}</h1>
+					<h1>
+						<router-link
+							:to="{
+								name: 'film',
+								params: {
+									id: film.id,
+								},
+							}"
+						>
+							{{ film.name }}
+						</router-link>
+					</h1>
 					<div class="tags">
-
 						<p>{{ film.country }}</p>
 						<p>{{ film.type }}</p>
 						<p>{{ film.age }}+</p>
-
 					</div>
-					
-					<div class="seances">
-							<p>{{ halls[0].adress }}</p>
-							<div class="time">
-								<template v-for="seance in seances">
 
-									<div class="t" v-if="seance.idFilm==film.id">
-										{{ seance.time }}
-									</div>
-									
-								</template>
-							</div>
+					<div class="seances">
+						<p>{{ halls[0].adress }}</p>
+						<div class="time">
+							<template v-for="seance in seances">
+								<div class="t" v-if="seance.idFilm == film.id">
+									{{ seance.time }}
+								</div>
+							</template>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -58,7 +65,6 @@ export default {
 <style scoped>
 .container {
 	display: grid;
-	width: 1256px;
 	border-radius: 15px;
 	border: #98c15e 1px solid;
 	background: #4b4b4b;
@@ -66,7 +72,7 @@ export default {
 	padding: 40px 31px;
 }
 
-.seances{
+.seances {
 	display: flex;
 	justify-content: space-between;
 	font-size: 30px;
@@ -80,18 +86,17 @@ export default {
 	margin-right: 37px;
 }
 
-.t{
-	border:#cde735 1px solid;
+.t {
+	border: #cde735 1px solid;
 	border-radius: 5px;
 	padding: 10px;
 	background-color: #363636;
 }
 
-.time{
+.time {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 12px;
-	
 }
 
 .film {
@@ -108,7 +113,7 @@ img {
 	border: #cde735 solid 1px;
 }
 
-.tags{
+.tags {
 	margin-top: 24px;
 	display: grid;
 	grid-template-columns: max-content max-content max-content;

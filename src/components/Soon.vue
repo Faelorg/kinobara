@@ -1,5 +1,5 @@
 <script lang="ts">
-import { IFilms, IState, ISeances, IHalls } from '../Types';
+import { IFilms, IState, ISeances, IHalls } from '../Types'
 
 let films: IFilms[]
 let states: IState[]
@@ -26,25 +26,35 @@ export default {
 <template>
 	<div class="container">
 		<template v-for="film in films">
-			<div v-if="film.idState == 2 || film.idState == 3 || film.idState == 4" class="film">
+			<div
+				v-if="film.idState == 2 || film.idState == 3 || film.idState == 4"
+				class="film"
+			>
 				<img :src="film.image" alt="film" />
 				<div class="film_text">
-					<h1>{{ film.name }}</h1>
+					<h1>
+						<router-link
+							:to="{
+								name: 'film',
+								params: {
+									id: film.id,
+								},
+							}"
+						>
+							{{ film.name }}
+						</router-link>
+					</h1>
 					<div class="tags">
-
 						<p>{{ film.country }}</p>
 						<p>{{ film.type }}</p>
 						<p>{{ film.age }}+</p>
-
 					</div>
-					
+
 					<div class="seances">
 						<template v-for="state in states">
-
-							<div class="t" v-if="state.id==film.idState">
-									{{ state.text }}
+							<div class="t" v-if="state.id == film.idState">
+								{{ state.text }}
 							</div>
-									
 						</template>
 					</div>
 				</div>
@@ -55,7 +65,6 @@ export default {
 <style scoped>
 .container {
 	display: grid;
-	width: 1256px;
 	border-radius: 15px;
 	border: #98c15e 1px solid;
 	background: #4b4b4b;
@@ -63,9 +72,9 @@ export default {
 	padding: 40px 31px;
 }
 
-.seances{
+.seances {
 	display: flex;
-	justify-content:center;
+	justify-content: center;
 	font-size: 30px;
 	margin-top: 24px;
 	color: #cde735;
@@ -77,7 +86,7 @@ export default {
 	margin-right: 37px;
 }
 
-.t{
+.t {
 	padding: 10px;
 }
 
@@ -95,7 +104,7 @@ img {
 	border: #cde735 solid 1px;
 }
 
-.tags{
+.tags {
 	margin-top: 24px;
 	display: grid;
 	grid-template-columns: max-content max-content max-content;

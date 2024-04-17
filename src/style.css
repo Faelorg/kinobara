@@ -62,4 +62,5 @@ h5,
 h6 {
 	font-weight: normal;
 	font-size: medium;
+	height: min-content;
 }
