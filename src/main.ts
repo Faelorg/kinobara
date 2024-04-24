@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 import Main from './components/Main.vue'
 import Soon from './components/Soon.vue'

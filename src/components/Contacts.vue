@@ -44,4 +44,22 @@ p {
 	padding: 10px;
 	justify-content: center;
 }
+
+@media screen and (max-width: 950px) {
+	h3 {
+		font-size: 56px;
+	}
+	.main {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	h3 {
+		font-size: 42px;
+	}
+	.main {
+		font-size: 21px;
+	}
+}
 </style>

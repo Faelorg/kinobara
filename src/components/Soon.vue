@@ -71,7 +71,9 @@ export default {
 	gap: 46px;
 	padding: 40px 31px;
 }
-
+* {
+	text-decoration: none;
+}
 .seances {
 	display: flex;
 	justify-content: center;
@@ -121,5 +123,112 @@ h1 {
 	font-size: 42px;
 	color: #cde735;
 	font-weight: bold;
+}
+
+@media screen and (max-width: 1300px) {
+	.seances {
+		display: grid;
+		justify-content: center;
+		justify-items: center;
+	}
+	.seances {
+		font-size: 24px;
+		padding: 5px 15px;
+	}
+
+	.tags {
+		font-size: 26px;
+		margin-top: 5px;
+	}
+	a {
+		font-size: 30px;
+	}
+}
+
+@media screen and (max-width: 1070px) {
+	.containe {
+		padding: 20px 15px;
+	}
+
+	.film {
+		grid-template-columns: repeat(2, max-content);
+	}
+
+	.film img {
+		width: 50%;
+	}
+
+	.film {
+		width: 100%;
+		padding: 0 10px;
+		grid-template-columns: 100%;
+		justify-self: center;
+		justify-content: center;
+		justify-items: center;
+	}
+
+	.film_text {
+		display: grid;
+		justify-content: center;
+		justify-items: center;
+		justify-self: center;
+	}
+
+	.seances {
+		display: grid;
+		justify-items: center;
+		justify-content: center;
+		justify-self: center;
+		margin: 5px;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.tags {
+		grid-template-columns: max-content;
+		justify-content: center;
+		justify-items: center;
+		gap: 5px;
+	}
+
+	.tags p {
+		margin: 0;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.time {
+		display: grid;
+		grid-template-columns: 100%;
+	}
+
+	.seances {
+		font-size: 20px;
+		padding: 2px 5px;
+	}
+
+	.film {
+		padding: 0;
+	}
+
+	.film_text {
+		padding: 0;
+	}
+
+	.tags {
+		font-size: 22px;
+		margin-top: 5px;
+	}
+	h1 {
+		font-size: 24px;
+		height: max-content;
+	}
+	a {
+		font-size: 24px;
+	}
+
+	.film img {
+		width: 100%;
+	}
 }
 </style>

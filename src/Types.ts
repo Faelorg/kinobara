@@ -34,7 +34,7 @@ export interface ISeances {
 export interface IHalls {
 	id: number
 	adress: string
-	seats: ISeats[][]
+	seats: ISeats[]
 }
 
 export interface ISeats {

@@ -16,7 +16,7 @@ export default {
 }
 </script>
 <template>
-	<div class="container">
+	<div class="containe">
 		<template v-for="sale in sales">
 			<div class="sale">
 				<img :src="'../' + sale.image" alt="sale" />
@@ -40,7 +40,7 @@ export default {
 	</div>
 </template>
 <style scoped>
-.container {
+.containe {
 	display: grid;
 	border-radius: 15px;
 	border: #98c15e 1px solid;
@@ -51,22 +51,15 @@ export default {
 
 .sale {
 	display: grid;
-	grid-template-columns: max-content max-content;
+	grid-template-columns: max-content 1fr;
 	gap: 10px;
 }
-
+* {
+	text-decoration: none;
+}
 img {
 	border-radius: 15px;
 	border: #cde735 solid 1px;
-}
-
-.tags {
-	margin-top: 24px;
-	display: grid;
-	grid-template-columns: max-content max-content max-content;
-	gap: 40px;
-	font-size: 30px;
-	color: #cde735;
 }
 
 h1 {
@@ -75,8 +68,49 @@ h1 {
 	font-weight: bold;
 }
 p {
-	font-size: 28px;
+	font-size: 20px;
 	color: #cde735;
 	width: 60%;
+}
+
+@media screen and (max-width: 1300px) {
+	.sale {
+		grid-template-columns: 35% 65%;
+	}
+
+	.sale img {
+		width: 100%;
+	}
+
+	a {
+		font-size: 30px;
+	}
+
+	.sale_text h1 {
+		font-size: 40px;
+	}
+}
+
+@media screen and (max-width: 1070px) {
+	.sale_text p {
+		font-size: 16px;
+		width: 90%;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.sale {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.sale_text h1 {
+		font-size: 28px;
+	}
+	.sale_text p {
+		font-size: 12px;
+		width: 95%;
+	}
 }
 </style>
